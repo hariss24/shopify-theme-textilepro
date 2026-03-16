@@ -1,0 +1,587 @@
+{% doc %}
+  @prompt
+    une barre de menu avec les catégories : menteaux; vestes; chemises; robes; pulls; pantalons; jeans; chaussure; sacs 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-category-menu-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;
+  }
+
+  .ai-category-menu__container-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: {{ block.settings.alignment }};
+    align-items: center;
+    gap: {{ block.settings.item_spacing }}px;
+    flex-wrap: wrap;
+  }
+
+  .ai-category-menu__item-{{ ai_gen_id }} {
+    list-style: none;
+  }
+
+  .ai-category-menu__link-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: {{ block.settings.link_padding_vertical }}px {{ block.settings.link_padding_horizontal }}px;
+    color: {{ block.settings.text_color }};
+    text-decoration: none;
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    border-radius: {{ block.settings.border_radius }}px;
+    transition: all 0.3s ease;
+    background-color: {{ block.settings.link_background_color }};
+  }
+
+  .ai-category-menu__link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.text_hover_color }};
+    background-color: {{ block.settings.link_hover_background_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-category-menu__container-{{ ai_gen_id }} {
+      justify-content: {{ block.settings.mobile_alignment }};
+      gap: {{ block.settings.mobile_item_spacing }}px;
+    }
+
+    .ai-category-menu__link-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_font_size }}px;
+      padding: {{ block.settings.mobile_link_padding_vertical }}px {{ block.settings.mobile_link_padding_horizontal }}px;
+    }
+  }
+{% endstyle %}
+
+<category-menu-{{ ai_gen_id }} class="ai-category-menu-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <nav class="ai-category-menu__container-{{ ai_gen_id }}" role="navigation" aria-label="Catégories de produits">
+    {% if block.settings.category_1_enabled %}
+      <div class="ai-category-menu__item-{{ ai_gen_id }}">
+        <a href="{{ block.settings.category_1_url }}" class="ai-category-menu__link-{{ ai_gen_id }}">
+          {{ block.settings.category_1_label }}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if block.settings.category_2_enabled %}
+      <div class="ai-category-menu__item-{{ ai_gen_id }}">
+        <a href="{{ block.settings.category_2_url }}" class="ai-category-menu__link-{{ ai_gen_id }}">
+          {{ block.settings.category_2_label }}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if block.settings.category_3_enabled %}
+      <div class="ai-category-menu__item-{{ ai_gen_id }}">
+        <a href="{{ block.settings.category_3_url }}" class="ai-category-menu__link-{{ ai_gen_id }}">
+          {{ block.settings.category_3_label }}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if block.settings.category_4_enabled %}
+      <div class="ai-category-menu__item-{{ ai_gen_id }}">
+        <a href="{{ block.settings.category_4_url }}" class="ai-category-menu__link-{{ ai_gen_id }}">
+          {{ block.settings.category_4_label }}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if block.settings.category_5_enabled %}
+      <div class="ai-category-menu__item-{{ ai_gen_id }}">
+        <a href="{{ block.settings.category_5_url }}" class="ai-category-menu__link-{{ ai_gen_id }}">
+          {{ block.settings.category_5_label }}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if block.settings.category_6_enabled %}
+      <div class="ai-category-menu__item-{{ ai_gen_id }}">
+        <a href="{{ block.settings.category_6_url }}" class="ai-category-menu__link-{{ ai_gen_id }}">
+          {{ block.settings.category_6_label }}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if block.settings.category_7_enabled %}
+      <div class="ai-category-menu__item-{{ ai_gen_id }}">
+        <a href="{{ block.settings.category_7_url }}" class="ai-category-menu__link-{{ ai_gen_id }}">
+          {{ block.settings.category_7_label }}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if block.settings.category_8_enabled %}
+      <div class="ai-category-menu__item-{{ ai_gen_id }}">
+        <a href="{{ block.settings.category_8_url }}" class="ai-category-menu__link-{{ ai_gen_id }}">
+          {{ block.settings.category_8_label }}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if block.settings.category_9_enabled %}
+      <div class="ai-category-menu__item-{{ ai_gen_id }}">
+        <a href="{{ block.settings.category_9_url }}" class="ai-category-menu__link-{{ ai_gen_id }}">
+          {{ block.settings.category_9_label }}
+        </a>
+      </div>
+    {% endif %}
+  </nav>
+</category-menu-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CategoryMenu{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.links = this.querySelectorAll('.ai-category-menu__link-{{ ai_gen_id }}');
+        this.highlightCurrentPage();
+      }
+
+      highlightCurrentPage() {
+        const currentPath = window.location.pathname;
+        this.links.forEach(link => {
+          if (link.getAttribute('href') === currentPath) {
+            link.style.fontWeight = '700';
+          }
+        });
+      }
+    }
+
+    customElements.define('category-menu-{{ ai_gen_id }}', CategoryMenu{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Barre de catégories",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Catégorie 1 - Manteaux"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_1_enabled",
+      "label": "Activer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_1_label",
+      "label": "Libellé",
+      "default": "Manteaux"
+    },
+    {
+      "type": "url",
+      "id": "category_1_url",
+      "label": "Lien"
+    },
+    {
+      "type": "header",
+      "content": "Catégorie 2 - Vestes"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_2_enabled",
+      "label": "Activer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_2_label",
+      "label": "Libellé",
+      "default": "Vestes"
+    },
+    {
+      "type": "url",
+      "id": "category_2_url",
+      "label": "Lien"
+    },
+    {
+      "type": "header",
+      "content": "Catégorie 3 - Chemises"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_3_enabled",
+      "label": "Activer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_3_label",
+      "label": "Libellé",
+      "default": "Chemises"
+    },
+    {
+      "type": "url",
+      "id": "category_3_url",
+      "label": "Lien"
+    },
+    {
+      "type": "header",
+      "content": "Catégorie 4 - Robes"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_4_enabled",
+      "label": "Activer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_4_label",
+      "label": "Libellé",
+      "default": "Robes"
+    },
+    {
+      "type": "url",
+      "id": "category_4_url",
+      "label": "Lien"
+    },
+    {
+      "type": "header",
+      "content": "Catégorie 5 - Pulls"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_5_enabled",
+      "label": "Activer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_5_label",
+      "label": "Libellé",
+      "default": "Pulls"
+    },
+    {
+      "type": "url",
+      "id": "category_5_url",
+      "label": "Lien"
+    },
+    {
+      "type": "header",
+      "content": "Catégorie 6 - Pantalons"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_6_enabled",
+      "label": "Activer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_6_label",
+      "label": "Libellé",
+      "default": "Pantalons"
+    },
+    {
+      "type": "url",
+      "id": "category_6_url",
+      "label": "Lien"
+    },
+    {
+      "type": "header",
+      "content": "Catégorie 7 - Jeans"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_7_enabled",
+      "label": "Activer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_7_label",
+      "label": "Libellé",
+      "default": "Jeans"
+    },
+    {
+      "type": "url",
+      "id": "category_7_url",
+      "label": "Lien"
+    },
+    {
+      "type": "header",
+      "content": "Catégorie 8 - Chaussures"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_8_enabled",
+      "label": "Activer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_8_label",
+      "label": "Libellé",
+      "default": "Chaussures"
+    },
+    {
+      "type": "url",
+      "id": "category_8_url",
+      "label": "Lien"
+    },
+    {
+      "type": "header",
+      "content": "Catégorie 9 - Sacs"
+    },
+    {
+      "type": "checkbox",
+      "id": "category_9_enabled",
+      "label": "Activer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "category_9_label",
+      "label": "Libellé",
+      "default": "Sacs"
+    },
+    {
+      "type": "url",
+      "id": "category_9_url",
+      "label": "Lien"
+    },
+    {
+      "type": "header",
+      "content": "Disposition"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignement desktop",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Gauche"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "flex-end",
+          "label": "Droite"
+        },
+        {
+          "value": "space-between",
+          "label": "Espacé"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_alignment",
+      "label": "Alignement mobile",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Gauche"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "flex-end",
+          "label": "Droite"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Largeur desktop",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "item_spacing",
+      "label": "Espacement desktop",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_item_spacing",
+      "label": "Espacement mobile",
+      "min": 0,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Couleur de fond",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur du texte",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "text_hover_color",
+      "label": "Couleur du texte au survol",
+      "default": "#334fb4"
+    },
+    {
+      "type": "color",
+      "id": "link_background_color",
+      "label": "Fond du lien",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_background_color",
+      "label": "Fond du lien au survol",
+      "default": "#f3f3f3"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Taille de police desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_font_size",
+      "label": "Taille de police mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Épaisseur de police",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Moyen"
+        },
+        {
+          "value": "600",
+          "label": "Semi-gras"
+        },
+        {
+          "value": "700",
+          "label": "Gras"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Arrondi des coins",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Espacement vertical",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Espacement horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "link_padding_vertical",
+      "label": "Espacement vertical du lien",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "link_padding_horizontal",
+      "label": "Espacement horizontal du lien",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_link_padding_vertical",
+      "label": "Espacement vertical du lien mobile",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "mobile_link_padding_horizontal",
+      "label": "Espacement horizontal du lien mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barre de catégories"
+    }
+  ]
+}
+{% endschema %}
