@@ -1,1 +1,239 @@
-{"sections":{"image_banner":{"type":"image-banner","blocks":{"text_6amJ4y":{"type":"text","settings":{"text":"Découvrez notre sélection de textiles pour professionnels.","text_style":"caption-with-letter-spacing"}},"heading":{"type":"heading","settings":{"heading":"<strong>Textile en Gros à Prix Imbattables<\/strong>","heading_size":"h1"}},"button":{"type":"buttons","settings":{"button_label_1":"Explorer tout le catalogue","button_link_1":"shopify:\/\/collections\/all","button_style_secondary_1":false,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["text_6amJ4y","heading","button"],"custom_css":[],"settings":{"image":"shopify:\/\/shop_images\/mannequin-pull-c-t-droit.png","image_overlay_opacity":30,"image_height":"small","image_behavior":"fixed","desktop_content_position":"middle-left","desktop_content_alignment":"left","show_text_box":true,"color_scheme":"scheme-1","stack_images_on_mobile":true,"mobile_content_alignment":"center","show_text_below":false}},"featured_collection_Vxy4nq":{"type":"featured-collection","name":"t:sections.featured-collection.presets.name","settings":{"collection":"catalogue","products_to_show":25,"title":"Nos produits","heading_size":"h1","description":"","show_description":false,"description_style":"body","columns_desktop":4,"enable_desktop_slider":false,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"scheme-2","image_ratio":"adapt","image_shape":"default","show_secondary_image":false,"show_vendor":false,"show_rating":false,"quick_add":"none","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}}},"order":["image_banner","featured_collection_Vxy4nq"]}
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Votre Grossiste Textile de Confiance</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "text_6amJ4y": {
+          "type": "text",
+          "settings": {
+            "text": "Lots de v\u00eatements, chaussures et accessoires \u00e0 prix imbattables. Livraison rapide dans toute la France.",
+            "text_style": "subtitle"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Voir le catalogue",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "Nous contacter",
+            "button_link_2": "shopify:\/\/pages\/contact",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": ["heading", "text_6amJ4y", "button"],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/mannequin-pull-c-t-droit.png",
+        "image_overlay_opacity": 40,
+        "image_height": "medium",
+        "image_behavior": "fixed",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": true,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "avantages": {
+      "type": "multicolumn",
+      "blocks": {
+        "col_livraison": {
+          "type": "column",
+          "settings": {
+            "title": "Livraison Rapide",
+            "text": "<p>Exp\u00e9dition sous 48h dans toute la France et en Europe. Suivi de colis en temps r\u00e9el.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_prix": {
+          "type": "column",
+          "settings": {
+            "title": "Prix Grossiste",
+            "text": "<p>Des tarifs d\u00e9gressifs sur tous nos lots. Plus vous commandez, plus vous \u00e9conomisez.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_qualite": {
+          "type": "column",
+          "settings": {
+            "title": "Qualit\u00e9 Garantie",
+            "text": "<p>Tous nos produits sont contr\u00f4l\u00e9s avant exp\u00e9dition. Satisfait ou rembours\u00e9 sous 14 jours.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_support": {
+          "type": "column",
+          "settings": {
+            "title": "Support D\u00e9di\u00e9",
+            "text": "<p>Une \u00e9quipe de professionnels \u00e0 votre \u00e9coute pour vous accompagner dans vos commandes.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["col_livraison", "col_prix", "col_qualite", "col_support"],
+      "settings": {
+        "title": "Pourquoi choisir TextilePro ?",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "catalogue",
+        "products_to_show": 8,
+        "title": "Nos Best-Sellers",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-2",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text": {
+      "type": "image-with-text",
+      "blocks": {
+        "iwt_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Un partenaire grossiste fiable depuis des ann\u00e9es",
+            "heading_size": "h1"
+          }
+        },
+        "iwt_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>TextilePro fournit des professionnels de la mode, des revendeurs et des boutiques avec des lots de v\u00eatements de qualit\u00e9 \u00e0 des prix comp\u00e9titifs. Notre catalogue couvre toutes les saisons et toutes les cat\u00e9gories : manteaux, vestes, chemises, jeans, chaussures et accessoires.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "iwt_button": {
+          "type": "button",
+          "settings": {
+            "button_label": "En savoir plus",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": ["iwt_heading", "iwt_text", "iwt_button"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "image_height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme_selector": "scheme-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "reassurance": {
+      "type": "rich-text",
+      "blocks": {
+        "reassurance_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Commandez en toute confiance",
+            "heading_size": "h1"
+          }
+        },
+        "reassurance_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>\u2705 Paiement s\u00e9curis\u00e9 (Visa, Mastercard, PayPal) &nbsp;&bull;&nbsp; \u2705 Livraison gratuite d\u00e8s 100\u20ac &nbsp;&bull;&nbsp; \u2705 Retours accept\u00e9s sous 14 jours &nbsp;&bull;&nbsp; \u2705 Service client r\u00e9actif<\/p>"
+          }
+        }
+      },
+      "block_order": ["reassurance_heading", "reassurance_text"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-5",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "nl_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Recevez nos offres exclusives"
+          }
+        },
+        "nl_paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Inscrivez-vous pour recevoir nos nouveaut\u00e9s, promotions et offres r\u00e9serv\u00e9es aux professionnels.<\/p>"
+          }
+        },
+        "nl_email": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": ["nl_heading", "nl_paragraph", "nl_email"],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "avantages",
+    "featured_collection",
+    "image_with_text",
+    "reassurance",
+    "newsletter"
+  ]
+}
