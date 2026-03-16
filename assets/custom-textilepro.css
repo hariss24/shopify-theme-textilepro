@@ -1,0 +1,358 @@
+/* ============================================
+   TextilePro Grossiste — Custom Design System
+   ============================================ */
+
+/* --- ROOT VARIABLES --- */
+:root {
+  --tp-navy: #1a1a6c;
+  --tp-navy-light: #2d2d8a;
+  --tp-gold: #c9a84c;
+  --tp-gold-light: #e8d590;
+  --tp-beige: #f5f0e8;
+  --tp-beige-dark: #e8e0d0;
+  --tp-white: #ffffff;
+  --tp-dark: #0f0f2e;
+  --tp-shadow: 0 4px 24px rgba(26, 26, 108, 0.08);
+  --tp-shadow-hover: 0 8px 40px rgba(26, 26, 108, 0.15);
+  --tp-radius: 12px;
+  --tp-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- ANNOUNCEMENT BAR --- */
+.announcement-bar {
+  background: var(--tp-navy) !important;
+  letter-spacing: 0.5px;
+}
+
+/* --- HEADER --- */
+.header {
+  border-bottom: 1px solid rgba(26, 26, 108, 0.08);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+}
+
+.header__menu-item {
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: var(--tp-transition);
+}
+
+.header__menu-item:hover {
+  color: var(--tp-gold) !important;
+}
+
+/* --- HERO BANNER --- */
+.banner {
+  min-height: 85vh !important;
+  position: relative;
+}
+
+.banner__box {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px !important;
+  padding: 3rem 3.5rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.12);
+  max-width: 600px;
+}
+
+.banner__heading {
+  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em;
+  color: var(--tp-navy) !important;
+}
+
+.banner__text {
+  font-size: 1.1rem !important;
+  line-height: 1.6 !important;
+  color: #444 !important;
+  margin-top: 0.5rem;
+}
+
+.banner .button {
+  padding: 16px 36px !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 8px !important;
+  transition: var(--tp-transition);
+}
+
+.banner .button--primary {
+  background: var(--tp-navy) !important;
+  box-shadow: 0 4px 16px rgba(26, 26, 108, 0.3);
+}
+
+.banner .button--primary:hover {
+  background: var(--tp-navy-light) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(26, 26, 108, 0.4);
+}
+
+.banner .button--secondary {
+  border: 2px solid var(--tp-navy) !important;
+  color: var(--tp-navy) !important;
+  border-radius: 8px !important;
+}
+
+.banner .button--secondary:hover {
+  background: var(--tp-navy) !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+/* --- MULTICOLUMN / AVANTAGES --- */
+.multicolumn .title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem) !important;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.multicolumn-card {
+  background: var(--tp-white);
+  border-radius: var(--tp-radius) !important;
+  padding: 2.5rem 2rem !important;
+  box-shadow: var(--tp-shadow);
+  border: 1px solid rgba(26, 26, 108, 0.06);
+  transition: var(--tp-transition);
+  text-align: center;
+}
+
+.multicolumn-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--tp-shadow-hover);
+}
+
+.multicolumn-card__info .inline-richtext {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--tp-navy);
+  margin-bottom: 0.5rem;
+}
+
+/* --- PRODUCT CARDS --- */
+.card-wrapper {
+  border-radius: var(--tp-radius);
+  overflow: hidden;
+  transition: var(--tp-transition);
+  background: white;
+}
+
+.card-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--tp-shadow-hover);
+}
+
+.card__heading a {
+  font-weight: 600 !important;
+  font-size: 0.95rem;
+  color: var(--tp-dark);
+}
+
+.price-item--regular,
+.price-item--sale {
+  font-weight: 700;
+  color: var(--tp-navy);
+}
+
+.price-item--regular {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.quick-add__submit {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.8rem !important;
+  transition: var(--tp-transition);
+}
+
+.quick-add__submit:hover {
+  background: var(--tp-navy) !important;
+  color: white !important;
+}
+
+/* --- FEATURED COLLECTION --- */
+.collection .title,
+.section-template--index .title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.button--primary[href*="collections"] {
+  background: var(--tp-navy) !important;
+  border-radius: 8px !important;
+  padding: 14px 32px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* --- IMAGE WITH TEXT --- */
+.image-with-text {
+  border-radius: var(--tp-radius);
+  overflow: hidden;
+}
+
+.image-with-text__content {
+  padding: 3rem !important;
+}
+
+.image-with-text .image-with-text__heading {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem) !important;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--tp-navy);
+}
+
+.image-with-text .image-with-text__text p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.image-with-text .button {
+  border-radius: 8px !important;
+  padding: 14px 28px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* --- RICH TEXT / REASSURANCE BAR --- */
+.rich-text__wrapper {
+  padding: 2.5rem 2rem !important;
+}
+
+.rich-text__heading {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem) !important;
+  font-weight: 700 !important;
+  margin-bottom: 1rem;
+}
+
+.rich-text__text p {
+  font-size: 1.05rem !important;
+  line-height: 1.8;
+}
+
+/* --- NEWSLETTER --- */
+.newsletter {
+  text-align: center;
+}
+
+.newsletter__heading {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem) !important;
+  font-weight: 700 !important;
+}
+
+.newsletter .field__input {
+  border-radius: 8px 0 0 8px !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  padding: 14px 18px !important;
+}
+
+.newsletter .field__input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletter .newsletter-form__button {
+  border-radius: 0 8px 8px 0 !important;
+  background: var(--tp-gold) !important;
+  color: var(--tp-dark) !important;
+  font-weight: 700;
+  padding: 14px 20px !important;
+}
+
+.newsletter .newsletter-form__button:hover {
+  background: var(--tp-gold-light) !important;
+}
+
+/* --- BADGE SOLD OUT --- */
+.badge--bottom-left {
+  border-radius: 6px !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 6px 12px !important;
+}
+
+/* --- FOOTER --- */
+.footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__title {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+
+/* --- BUTTONS GLOBAL --- */
+.button {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: var(--tp-transition);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+/* --- SCROLL ANIMATIONS ENHANCEMENT --- */
+.scroll-trigger.animate--slide-in {
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- SECTION SPACING --- */
+.section-template--index + .section-template--index {
+  margin-top: 0;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media screen and (max-width: 749px) {
+  .banner {
+    min-height: 70vh !important;
+  }
+
+  .banner__box {
+    padding: 2rem 1.5rem !important;
+    margin: 1rem !important;
+    border-radius: 12px !important;
+  }
+
+  .banner__heading {
+    font-size: 1.8rem !important;
+  }
+
+  .banner .button {
+    padding: 14px 24px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .multicolumn-card {
+    padding: 1.5rem 1.2rem !important;
+  }
+
+  .image-with-text__content {
+    padding: 2rem 1.5rem !important;
+  }
+}
+
+/* --- SUBTLE GRAIN TEXTURE ON BEIGE SECTIONS --- */
+.color-scheme-1 {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a1a6c' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}

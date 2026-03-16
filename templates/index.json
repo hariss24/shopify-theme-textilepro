@@ -6,34 +6,38 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>Votre Grossiste Textile de Confiance</strong>",
+            "heading": "Votre Grossiste Textile de Confiance",
             "heading_size": "h0"
           }
         },
-        "text_6amJ4y": {
+        "text_sub": {
           "type": "text",
           "settings": {
-            "text": "Lots de v\u00eatements, chaussures et accessoires \u00e0 prix imbattables. Livraison rapide dans toute la France.",
+            "text": "Des lots de v\u00eatements, chaussures et accessoires de qualit\u00e9 \u00e0 prix grossiste. Livraison express dans toute l\u2019Europe.",
             "text_style": "subtitle"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Voir le catalogue",
+            "button_label_1": "D\u00e9couvrir le catalogue",
             "button_link_1": "shopify:\/\/collections\/all",
             "button_style_secondary_1": false,
-            "button_label_2": "Nous contacter",
+            "button_label_2": "Demander un devis",
             "button_link_2": "shopify:\/\/pages\/contact",
             "button_style_secondary_2": true
           }
         }
       },
-      "block_order": ["heading", "text_6amJ4y", "button"],
+      "block_order": ["heading", "text_sub", "button"],
+      "custom_css": [
+        ".banner {min-height: 90vh;}",
+        ".banner__box {max-width: 580px; padding: 3.5rem 3rem;}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/mannequin-pull-c-t-droit.png",
-        "image_overlay_opacity": 40,
-        "image_height": "medium",
+        "image_overlay_opacity": 30,
+        "image_height": "large",
         "image_behavior": "fixed",
         "desktop_content_position": "middle-left",
         "desktop_content_alignment": "left",
@@ -50,8 +54,8 @@
         "col_livraison": {
           "type": "column",
           "settings": {
-            "title": "Livraison Rapide",
-            "text": "<p>Exp\u00e9dition sous 48h dans toute la France et en Europe. Suivi de colis en temps r\u00e9el.<\/p>",
+            "title": "\ud83d\ude9a Livraison Express",
+            "text": "<p>Exp\u00e9dition sous 24-48h partout en France et en Europe. Suivi en temps r\u00e9el de chaque commande.</p>",
             "link_label": "",
             "link": ""
           }
@@ -59,8 +63,8 @@
         "col_prix": {
           "type": "column",
           "settings": {
-            "title": "Prix Grossiste",
-            "text": "<p>Des tarifs d\u00e9gressifs sur tous nos lots. Plus vous commandez, plus vous \u00e9conomisez.<\/p>",
+            "title": "\ud83d\udcb0 Prix Imbattables",
+            "text": "<p>Tarifs d\u00e9gressifs sur tous nos lots. Jusqu\u2019\u00e0 -40% sur les grandes quantit\u00e9s.</p>",
             "link_label": "",
             "link": ""
           }
@@ -68,8 +72,8 @@
         "col_qualite": {
           "type": "column",
           "settings": {
-            "title": "Qualit\u00e9 Garantie",
-            "text": "<p>Tous nos produits sont contr\u00f4l\u00e9s avant exp\u00e9dition. Satisfait ou rembours\u00e9 sous 14 jours.<\/p>",
+            "title": "\u2705 Qualit\u00e9 Contr\u00f4l\u00e9e",
+            "text": "<p>Chaque lot est inspect\u00e9 avant exp\u00e9dition. Garantie satisfait ou rembours\u00e9 14 jours.</p>",
             "link_label": "",
             "link": ""
           }
@@ -77,33 +81,44 @@
         "col_support": {
           "type": "column",
           "settings": {
-            "title": "Support D\u00e9di\u00e9",
-            "text": "<p>Une \u00e9quipe de professionnels \u00e0 votre \u00e9coute pour vous accompagner dans vos commandes.<\/p>",
+            "title": "\ud83d\udcde Support Pro",
+            "text": "<p>Un conseiller d\u00e9di\u00e9 pour vous accompagner. Disponible par t\u00e9l\u00e9phone, email et WhatsApp.</p>",
             "link_label": "",
             "link": ""
           }
         }
       },
       "block_order": ["col_livraison", "col_prix", "col_qualite", "col_support"],
+      "custom_css": [
+        ".multicolumn-list__item {background: white; border-radius: 16px; padding: 2.5rem 1.5rem; box-shadow: 0 4px 24px rgba(26, 26, 108, 0.06); border: 1px solid rgba(26, 26, 108, 0.04); transition: all 0.3s ease;}",
+        ".multicolumn-list__item:hover {transform: translateY(-6px); box-shadow: 0 12px 40px rgba(26, 26, 108, 0.12);}",
+        "h3 {font-size: 1.2rem; margin-bottom: 0.5rem;}"
+      ],
       "settings": {
-        "title": "Pourquoi choisir TextilePro ?",
+        "title": "Pourquoi plus de 500 professionnels nous font confiance",
         "heading_size": "h1",
         "image_width": "third",
         "image_ratio": "adapt",
         "columns_desktop": 4,
         "column_alignment": "center",
-        "background_style": "primary",
+        "background_style": "none",
         "button_label": "",
         "button_link": "",
         "color_scheme": "scheme-1",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 40,
-        "padding_bottom": 40
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "featured_collection": {
       "type": "featured-collection",
+      "custom_css": [
+        ".card--card {border-radius: 12px; overflow: hidden; border: none; box-shadow: 0 2px 16px rgba(0,0,0,0.06);}",
+        ".card--card:hover {box-shadow: 0 8px 32px rgba(0,0,0,0.12);}",
+        ".card__heading a {font-weight: 600;}",
+        ".full-unstyled-link:hover {color: #1a1a6c;}"
+      ],
       "settings": {
         "collection": "catalogue",
         "products_to_show": 8,
@@ -118,7 +133,7 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "color_scheme": "scheme-2",
-        "image_ratio": "adapt",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -126,8 +141,8 @@
         "quick_add": "standard",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "image_with_text": {
@@ -136,26 +151,31 @@
         "iwt_heading": {
           "type": "heading",
           "settings": {
-            "heading": "Un partenaire grossiste fiable depuis des ann\u00e9es",
+            "heading": "Votre partenaire grossiste depuis des ann\u00e9es",
             "heading_size": "h1"
           }
         },
         "iwt_text": {
           "type": "text",
           "settings": {
-            "text": "<p>TextilePro fournit des professionnels de la mode, des revendeurs et des boutiques avec des lots de v\u00eatements de qualit\u00e9 \u00e0 des prix comp\u00e9titifs. Notre catalogue couvre toutes les saisons et toutes les cat\u00e9gories : manteaux, vestes, chemises, jeans, chaussures et accessoires.<\/p>",
+            "text": "<p>TextilePro approvisionne les <strong>boutiques, revendeurs et professionnels de la mode</strong> avec des lots de v\u00eatements premium \u00e0 prix comp\u00e9titifs.<\/p><p>Notre catalogue couvre <strong>toutes les saisons</strong> : manteaux, vestes, chemises, jeans, chaussures et accessoires. Chaque produit est s\u00e9lectionn\u00e9 pour sa qualit\u00e9 et son potentiel de revente.<\/p>",
             "text_style": "body"
           }
         },
         "iwt_button": {
           "type": "button",
           "settings": {
-            "button_label": "En savoir plus",
-            "button_link": ""
+            "button_label": "Parcourir le catalogue",
+            "button_link": "shopify:\/\/collections\/all"
           }
         }
       },
       "block_order": ["iwt_heading", "iwt_text", "iwt_button"],
+      "custom_css": [
+        ".image-with-text__content {padding: 4rem 3rem;}",
+        ".image-with-text__heading {font-size: 2rem; line-height: 1.2; margin-bottom: 1rem;}",
+        "p {font-size: 1.05rem; line-height: 1.8;}"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "image_height": "adapt",
@@ -168,8 +188,8 @@
         "color_scheme_selector": "scheme-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "reassurance": {
@@ -185,18 +205,22 @@
         "reassurance_text": {
           "type": "text",
           "settings": {
-            "text": "<p>\u2705 Paiement s\u00e9curis\u00e9 (Visa, Mastercard, PayPal) &nbsp;&bull;&nbsp; \u2705 Livraison gratuite d\u00e8s 100\u20ac &nbsp;&bull;&nbsp; \u2705 Retours accept\u00e9s sous 14 jours &nbsp;&bull;&nbsp; \u2705 Service client r\u00e9actif<\/p>"
+            "text": "<p>\u2705 Paiement 100% s\u00e9curis\u00e9 &nbsp;\u2022&nbsp; \ud83d\ude9a Livraison gratuite d\u00e8s 100\u20ac &nbsp;\u2022&nbsp; \ud83d\udd04 Retours sous 14 jours &nbsp;\u2022&nbsp; \ud83d\udcde Service client 6j/7</p>"
           }
         }
       },
       "block_order": ["reassurance_heading", "reassurance_text"],
+      "custom_css": [
+        ".rich-text__heading {font-size: 2rem; margin-bottom: 0.8rem;}",
+        "p {font-size: 1.15rem; letter-spacing: 0.01em;}"
+      ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-5",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 40
+        "padding_top": 52,
+        "padding_bottom": 52
       }
     },
     "newsletter": {
@@ -211,7 +235,7 @@
         "nl_paragraph": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Inscrivez-vous pour recevoir nos nouveaut\u00e9s, promotions et offres r\u00e9serv\u00e9es aux professionnels.<\/p>"
+            "text": "<p>Rejoignez +500 professionnels. Nouveaut\u00e9s, promotions et offres r\u00e9serv\u00e9es chaque semaine.</p>"
           }
         },
         "nl_email": {
@@ -220,11 +244,17 @@
         }
       },
       "block_order": ["nl_heading", "nl_paragraph", "nl_email"],
+      "custom_css": [
+        ".newsletter__heading {font-size: 2rem; margin-bottom: 0.5rem;}",
+        ".field__input {border-radius: 8px 0 0 8px; padding: 16px 20px; border: 2px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08);}",
+        ".newsletter-form__button {border-radius: 0 8px 8px 0; background: #c9a84c; font-weight: 700; padding: 16px 24px;}",
+        ".newsletter-form__button:hover {background: #e8d590;}"
+      ],
       "settings": {
         "color_scheme": "scheme-3",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 40
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
