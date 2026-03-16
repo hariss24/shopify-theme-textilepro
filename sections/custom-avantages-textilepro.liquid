@@ -1,0 +1,434 @@
+{{ 'section-custom-avantages-textilepro' | append: '' }}
+
+<style>
+  /* ═══════════════════════════════════════════════════
+     AVANTAGES TEXTILEPRO — Scoped Styles
+     Premium B2B wholesale advantages section
+     ═══════════════════════════════════════════════════ */
+
+  .avantages-textilepro {
+    --atp-gold: #c9a84c;
+    --atp-gold-light: rgba(201, 168, 76, 0.12);
+    --atp-navy: #1a1a6c;
+    --atp-navy-muted: rgba(26, 26, 108, 0.06);
+    --atp-beige: #f5f0e8;
+    --atp-white: #ffffff;
+    --atp-text: #2c2c2c;
+    --atp-text-muted: #7a7a7a;
+    --atp-radius: 16px;
+    --atp-transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    background-color: var(--atp-white);
+    padding: 80px 0 64px;
+    overflow: hidden;
+  }
+
+  .avantages-textilepro__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Header ──────────────────────────────────────── */
+
+  .avantages-textilepro__header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .avantages-textilepro__subtitle {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--atp-gold);
+    margin-bottom: 12px;
+  }
+
+  .avantages-textilepro__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--atp-navy);
+    line-height: 1.2;
+    margin: 0 0 20px;
+    padding: 0;
+  }
+
+  .avantages-textilepro__underline {
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--atp-gold);
+    margin: 0 auto;
+    border-radius: 1px;
+  }
+
+  /* ── Grid ────────────────────────────────────────── */
+
+  .avantages-textilepro__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+
+  /* ── Card ────────────────────────────────────────── */
+
+  .avantages-textilepro__card {
+    background: var(--atp-white);
+    border: 1px solid var(--atp-navy-muted);
+    border-radius: var(--atp-radius);
+    padding: 40px 28px 36px;
+    text-align: center;
+    position: relative;
+    transition:
+      transform var(--atp-transition),
+      box-shadow var(--atp-transition),
+      border-color var(--atp-transition);
+    border-left: 3px solid transparent;
+    cursor: default;
+
+    /* Scroll-reveal animation */
+    opacity: 0;
+    transform: translateY(32px);
+    animation: atpReveal 0.7s ease forwards;
+    animation-play-state: paused;
+  }
+
+  /* Staggered delays for each card */
+  .avantages-textilepro__card:nth-child(1) { animation-delay: 0.1s; }
+  .avantages-textilepro__card:nth-child(2) { animation-delay: 0.25s; }
+  .avantages-textilepro__card:nth-child(3) { animation-delay: 0.4s; }
+  .avantages-textilepro__card:nth-child(4) { animation-delay: 0.55s; }
+
+  /* When the section scrolls into view */
+  .avantages-textilepro__card.atp-visible {
+    animation-play-state: running;
+  }
+
+  @keyframes atpReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Hover state */
+  .avantages-textilepro__card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 12px 40px rgba(26, 26, 108, 0.08),
+      0 4px 12px rgba(26, 26, 108, 0.04);
+    border-left-color: var(--atp-gold);
+  }
+
+  /* Override animation transform on hover when visible */
+  .avantages-textilepro__card.atp-visible:hover {
+    transform: translateY(-6px);
+  }
+
+  .avantages-textilepro__card-icon {
+    font-size: 2.75rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .avantages-textilepro__card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--atp-text);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .avantages-textilepro__card-text {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--atp-text-muted);
+    margin: 0;
+  }
+
+  /* Subtle beige accent dot in top-right of card */
+  .avantages-textilepro__card::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--atp-beige);
+    transition: background var(--atp-transition);
+  }
+
+  .avantages-textilepro__card:hover::after {
+    background: var(--atp-gold);
+  }
+
+  /* ── Footer line ─────────────────────────────────── */
+
+  .avantages-textilepro__footer {
+    text-align: center;
+    padding-top: 8px;
+  }
+
+  .avantages-textilepro__footer-text {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--atp-text-muted);
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  .avantages-textilepro__footer-text strong {
+    color: var(--atp-gold);
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* ── Responsive: Tablet ──────────────────────────── */
+
+  @media (max-width: 1024px) {
+    .avantages-textilepro__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  /* ── Responsive: Mobile ──────────────────────────── */
+
+  @media (max-width: 749px) {
+    .avantages-textilepro {
+      padding: 56px 0 48px;
+    }
+
+    .avantages-textilepro__header {
+      margin-bottom: 40px;
+    }
+
+    .avantages-textilepro__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .avantages-textilepro__card {
+      padding: 28px 18px 24px;
+    }
+
+    .avantages-textilepro__card-icon {
+      font-size: 2.25rem;
+      margin-bottom: 14px;
+    }
+
+    .avantages-textilepro__card-title {
+      font-size: 0.95rem;
+    }
+
+    .avantages-textilepro__card-text {
+      font-size: 0.8rem;
+    }
+
+    .avantages-textilepro__footer-text {
+      font-size: 0.85rem;
+      padding: 0 16px;
+    }
+  }
+</style>
+
+<section
+  class="avantages-textilepro"
+  id="avantages-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+>
+  <div class="avantages-textilepro__container">
+
+    {%- comment -%} ── Section Header ── {%- endcomment -%}
+    <div class="avantages-textilepro__header">
+      {%- if section.settings.subtitle != blank -%}
+        <span class="avantages-textilepro__subtitle">
+          {{- section.settings.subtitle -}}
+        </span>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank -%}
+        <h2 class="avantages-textilepro__title">
+          {{- section.settings.title -}}
+        </h2>
+      {%- endif -%}
+
+      <span class="avantages-textilepro__underline" aria-hidden="true"></span>
+    </div>
+
+    {%- comment -%} ── Feature Cards Grid ── {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="avantages-textilepro__grid" id="atp-grid-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          <div
+            class="avantages-textilepro__card"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.icon != blank -%}
+              <span class="avantages-textilepro__card-icon" aria-hidden="true">
+                {{- block.settings.icon -}}
+              </span>
+            {%- endif -%}
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="avantages-textilepro__card-title">
+                {{- block.settings.title -}}
+              </h3>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <p class="avantages-textilepro__card-text">
+                {{- block.settings.description -}}
+              </p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ── Footer Tagline ── {%- endcomment -%}
+    {%- if section.settings.footer_text != blank -%}
+      <div class="avantages-textilepro__footer">
+        <p class="avantages-textilepro__footer-text">
+          {{ section.settings.footer_text }}
+        </p>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script>
+  (function () {
+    var sectionId = '{{ section.id }}';
+    var grid = document.getElementById('atp-grid-' + sectionId);
+    if (!grid) return;
+
+    var cards = grid.querySelectorAll('.avantages-textilepro__card');
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var items = entry.target.querySelectorAll('.avantages-textilepro__card');
+              items.forEach(function (card) {
+                card.classList.add('atp-visible');
+              });
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      );
+      observer.observe(grid);
+    } else {
+      /* Fallback: show all cards immediately */
+      cards.forEach(function (card) {
+        card.classList.add('atp-visible');
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Avantages TextilePro",
+  "tag": "section",
+  "class": "section-avantages-textilepro",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "POURQUOI NOUS CHOISIR"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre de la section",
+      "default": "Les avantages TextilePro"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_text",
+      "label": "Texte de bas de section",
+      "default": "<p>Rejoignez <strong>+500 professionnels</strong> satisfaits qui nous font confiance au quotidien</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Avantage",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icone (emoji)",
+          "default": "⭐"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Avantage"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Description de cet avantage pour vos clients professionnels."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Avantages TextilePro",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "🚚",
+            "title": "Livraison rapide",
+            "description": "Expédition sous 24-48h sur tout le territoire. Franco de port dès 500\u00a0\u20ac d'achat."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "💰",
+            "title": "Prix grossiste",
+            "description": "Tarifs dégressifs adaptés aux professionnels. Plus vous commandez, plus vous économisez."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "✅",
+            "title": "Qualité certifiée",
+            "description": "Textiles certifiés OEKO-TEX et contrôlés à chaque étape de la production."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "📞",
+            "title": "Support dédié",
+            "description": "Un conseiller attitré pour chaque compte professionnel. Disponible du lundi au vendredi."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,287 @@
+{% comment %}
+  Custom Newsletter Section - TextilePro B2B Wholesale
+  A premium newsletter signup with split layout in a navy/gold/beige palette.
+{% endcomment %}
+
+<style>
+  .newsletter-textilepro {
+    background-color: {{ section.settings.background_color }};
+    padding: 64px 0;
+    width: 100%;
+  }
+
+  .newsletter-textilepro__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .newsletter-textilepro__content {
+    flex: 1;
+    max-width: 460px;
+  }
+
+  .newsletter-textilepro__heading {
+    font-size: 36px;
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    line-height: 1.15;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .newsletter-textilepro__subtext {
+    font-size: 15px;
+    color: #5a5a6e;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .newsletter-textilepro__form-wrapper {
+    flex: 1;
+    max-width: 480px;
+  }
+
+  .newsletter-textilepro__form {
+    display: flex;
+    gap: 0;
+    width: 100%;
+  }
+
+  .newsletter-textilepro__input {
+    flex: 1;
+    padding: 14px 20px;
+    font-size: 14px;
+    border: 1.5px solid #d6d0c4;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    background-color: #ffffff;
+    color: #1a1a2e;
+    outline: none;
+    transition: border-color 0.25s ease;
+    font-family: inherit;
+  }
+
+  .newsletter-textilepro__input::placeholder {
+    color: #a09b8e;
+    font-size: 13px;
+  }
+
+  .newsletter-textilepro__input:focus {
+    border-color: {{ section.settings.button_color }};
+  }
+
+  .newsletter-textilepro__button {
+    padding: 14px 28px;
+    background-color: {{ section.settings.button_color }};
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.15s ease;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+
+  .newsletter-textilepro__button:hover {
+    background-color: #b8943f;
+  }
+
+  .newsletter-textilepro__button:active {
+    transform: scale(0.98);
+  }
+
+  .newsletter-textilepro__disclaimer {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #8a8578;
+    line-height: 1.4;
+  }
+
+  .newsletter-textilepro__success {
+    display: none;
+    padding: 14px 20px;
+    background-color: #e8f5e8;
+    border-radius: 8px;
+    color: #2d6a2d;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 749px) {
+    .newsletter-textilepro {
+      padding: 48px 0;
+    }
+
+    .newsletter-textilepro__container {
+      flex-direction: column;
+      text-align: center;
+      gap: 32px;
+      padding: 0 24px;
+    }
+
+    .newsletter-textilepro__content {
+      max-width: 100%;
+    }
+
+    .newsletter-textilepro__heading {
+      font-size: 28px;
+    }
+
+    .newsletter-textilepro__subtext {
+      font-size: 14px;
+    }
+
+    .newsletter-textilepro__form-wrapper {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .newsletter-textilepro__form {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .newsletter-textilepro__input {
+      border-right: 1.5px solid #d6d0c4;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .newsletter-textilepro__input:focus {
+      border-color: {{ section.settings.button_color }};
+    }
+
+    .newsletter-textilepro__button {
+      border-radius: 8px;
+      padding: 16px 28px;
+    }
+
+    .newsletter-textilepro__disclaimer {
+      text-align: center;
+    }
+  }
+</style>
+
+<section class="newsletter-textilepro" data-section-id="{{ section.id }}">
+  <div class="newsletter-textilepro__container">
+    <div class="newsletter-textilepro__content">
+      <h2 class="newsletter-textilepro__heading">{{ section.settings.heading }}</h2>
+      <p class="newsletter-textilepro__subtext">{{ section.settings.subtext }}</p>
+    </div>
+
+    <div class="newsletter-textilepro__form-wrapper">
+      {%- form 'customer', id: 'newsletter-textilepro-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+
+        <div class="newsletter-textilepro__form">
+          <input
+            type="email"
+            name="contact[email]"
+            class="newsletter-textilepro__input"
+            placeholder="{{ section.settings.placeholder }}"
+            required
+            autocomplete="email"
+            aria-label="{{ section.settings.placeholder }}"
+          >
+          <button type="submit" class="newsletter-textilepro__button">
+            {{ section.settings.button_label }}
+          </button>
+        </div>
+
+        {%- if form.posted_successfully? -%}
+          <p class="newsletter-textilepro__success" style="display: block;">
+            {{ section.settings.success_message }}
+          </p>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <p class="newsletter-textilepro__disclaimer" style="color: #c44;">
+            {{ form.errors.translated_fields['email'] | capitalize }}
+            {{ form.errors.messages['email'] }}
+          </p>
+        {%- endif -%}
+      {%- endform -%}
+
+      <p class="newsletter-textilepro__disclaimer">{{ section.settings.disclaimer }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter TextilePro",
+  "tag": "section",
+  "class": "newsletter-textilepro-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Offres Exclusives"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Rejoignez +500 professionnels. Nouveautés et promotions chaque semaine."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Email placeholder",
+      "default": "Votre adresse email"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "S'inscrire"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Merci ! Vous êtes inscrit(e)."
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer text",
+      "default": "Pas de spam. Désabonnement en un clic."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f5f0e8"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#0f0f2e"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#c9a84c"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter TextilePro"
+    }
+  ]
+}
+{% endschema %}

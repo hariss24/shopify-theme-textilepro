@@ -1,0 +1,776 @@
+<section
+  id="hero-textilepro-{{ section.id }}"
+  class="hero-tp"
+  data-section-id="{{ section.id }}"
+>
+  {%- comment -%} ===== RIGHT SIDE: IMAGE PANEL ===== {%- endcomment -%}
+  <div class="hero-tp__image-panel">
+    {%- if section.settings.hero_image != blank -%}
+      <div
+        class="hero-tp__image-bg"
+        style="background-image: url('{{ section.settings.hero_image | image_url: width: 1920 }}');"
+      ></div>
+    {%- else -%}
+      <div class="hero-tp__image-bg hero-tp__image-bg--placeholder">
+        {{ 'collection-1' | placeholder_svg_tag: 'hero-tp__placeholder-svg' }}
+      </div>
+    {%- endif -%}
+    <div class="hero-tp__image-overlay"></div>
+  </div>
+
+  {%- comment -%} ===== LEFT SIDE: CONTENT PANEL ===== {%- endcomment -%}
+  <div class="hero-tp__content-panel">
+    {%- comment -%} Geometric decorative elements {%- endcomment -%}
+    <div class="hero-tp__geo hero-tp__geo--circle"></div>
+    <div class="hero-tp__geo hero-tp__geo--diagonal"></div>
+    <div class="hero-tp__geo hero-tp__geo--dots"></div>
+
+    <div class="hero-tp__content-inner">
+      {%- comment -%} Badge / eyebrow {%- endcomment -%}
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="hero-tp__eyebrow hero-tp__anim hero-tp__anim--1">
+          <span class="hero-tp__eyebrow-dash"></span>
+          {{ section.settings.eyebrow }}
+        </span>
+      {%- endif -%}
+
+      {%- comment -%} Heading {%- endcomment -%}
+      <h1 class="hero-tp__heading hero-tp__anim hero-tp__anim--2">
+        {{ section.settings.heading }}
+        <span class="hero-tp__heading-accent"></span>
+      </h1>
+
+      {%- comment -%} Subtitle {%- endcomment -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero-tp__subheading hero-tp__anim hero-tp__anim--3">
+          {{ section.settings.subheading }}
+        </p>
+      {%- endif -%}
+
+      {%- comment -%} CTA Buttons {%- endcomment -%}
+      <div class="hero-tp__ctas hero-tp__anim hero-tp__anim--4">
+        {%- if section.settings.button_primary_text != blank -%}
+          <a
+            href="{{ section.settings.button_primary_link }}"
+            class="hero-tp__btn hero-tp__btn--primary"
+          >
+            {{ section.settings.button_primary_text }}
+            <svg class="hero-tp__btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button_secondary_text != blank -%}
+          <a
+            href="{{ section.settings.button_secondary_link }}"
+            class="hero-tp__btn hero-tp__btn--secondary"
+          >
+            {{ section.settings.button_secondary_text }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Stats Row {%- endcomment -%}
+      <div class="hero-tp__stats hero-tp__anim hero-tp__anim--5">
+        <div class="hero-tp__stat">
+          <span class="hero-tp__stat-number">{{ section.settings.stat_1_number }}</span>
+          <span class="hero-tp__stat-label">{{ section.settings.stat_1_label }}</span>
+        </div>
+        <div class="hero-tp__stat-divider"></div>
+        <div class="hero-tp__stat">
+          <span class="hero-tp__stat-number">{{ section.settings.stat_2_number }}</span>
+          <span class="hero-tp__stat-label">{{ section.settings.stat_2_label }}</span>
+        </div>
+        <div class="hero-tp__stat-divider"></div>
+        <div class="hero-tp__stat">
+          <span class="hero-tp__stat-number">{{ section.settings.stat_3_number }}</span>
+          <span class="hero-tp__stat-label">{{ section.settings.stat_3_label }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* =============================================
+     TEXTILEPRO HERO -- Scoped Styles
+     ============================================= */
+
+  /* ---------- Reset & base ---------- */
+  #hero-textilepro-{{ section.id }} *,
+  #hero-textilepro-{{ section.id }} *::before,
+  #hero-textilepro-{{ section.id }} *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* ---------- Keyframes ---------- */
+  @keyframes heroTpFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes heroTpSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes heroTpScaleIn {
+    from {
+      opacity: 0;
+      transform: scale(1.08);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes heroTpPulse {
+    0%, 100% { opacity: 0.12; }
+    50% { opacity: 0.22; }
+  }
+
+  @keyframes heroTpDash {
+    from { width: 0; }
+    to { width: 28px; }
+  }
+
+  @keyframes heroTpAccent {
+    from { width: 0; }
+    to { width: 80px; }
+  }
+
+  /* ---------- Section container ---------- */
+  .hero-tp {
+    position: relative;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* ---------- Content panel (left) ---------- */
+  .hero-tp__content-panel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #0f0f2e;
+    padding: 80px 64px 60px;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .hero-tp__content-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+    width: 100%;
+  }
+
+  /* ---------- Geometric decorations ---------- */
+  .hero-tp__geo--circle {
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 168, 76, 0.10);
+    animation: heroTpPulse 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .hero-tp__geo--circle::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 168, 76, 0.06);
+  }
+
+  .hero-tp__geo--diagonal {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero-tp__geo--diagonal::before {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 50%;
+    height: 140%;
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba(201, 168, 76, 0.03) 50%,
+      transparent 100%
+    );
+    transform: rotate(-12deg);
+  }
+
+  .hero-tp__geo--diagonal::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: -5%;
+    width: 1px;
+    height: 200px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(201, 168, 76, 0.15),
+      transparent
+    );
+    transform: rotate(25deg);
+  }
+
+  .hero-tp__geo--dots {
+    position: absolute;
+    bottom: 120px;
+    left: 40px;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+    opacity: 0.15;
+    background-image: radial-gradient(circle, #c9a84c 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
+
+  /* ---------- Entrance animations ---------- */
+  .hero-tp__anim {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hero-tp__anim--1 {
+    animation: heroTpSlideIn 0.7s 0.2s forwards;
+  }
+
+  .hero-tp__anim--2 {
+    animation: heroTpFadeUp 0.8s 0.35s forwards;
+  }
+
+  .hero-tp__anim--3 {
+    animation: heroTpFadeUp 0.8s 0.55s forwards;
+  }
+
+  .hero-tp__anim--4 {
+    animation: heroTpFadeUp 0.8s 0.7s forwards;
+  }
+
+  .hero-tp__anim--5 {
+    animation: heroTpFadeUp 0.8s 0.9s forwards;
+  }
+
+  /* ---------- Eyebrow ---------- */
+  .hero-tp__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--tp-font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 28px;
+  }
+
+  .hero-tp__eyebrow-dash {
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: #c9a84c;
+    animation: heroTpDash 0.6s 0.3s forwards;
+    width: 0;
+  }
+
+  /* ---------- Heading ---------- */
+  .hero-tp__heading {
+    font-family: var(--tp-font-display);
+    font-size: clamp(36px, 4.5vw, 64px);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 24px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero-tp__heading-accent {
+    display: block;
+    width: 0;
+    height: 4px;
+    margin-top: 16px;
+    background: linear-gradient(90deg, #c9a84c, #e8d48b);
+    border-radius: 2px;
+    animation: heroTpAccent 0.6s 0.8s forwards;
+  }
+
+  /* ---------- Subheading ---------- */
+  .hero-tp__subheading {
+    font-family: var(--tp-font-body);
+    font-size: clamp(15px, 1.15vw, 18px);
+    font-weight: 400;
+    line-height: 1.7;
+    color: #a0a0b8;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  /* ---------- CTA Buttons ---------- */
+  .hero-tp__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+
+  .hero-tp__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--tp-font-body);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 0;
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Primary button */
+  .hero-tp__btn--primary {
+    background: #c9a84c;
+    color: #0f0f2e;
+    border: 2px solid #c9a84c;
+  }
+
+  .hero-tp__btn--primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .hero-tp__btn--primary:hover {
+    background: #d4b45e;
+    border-color: #d4b45e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
+  }
+
+  .hero-tp__btn--primary:hover::before {
+    left: 100%;
+  }
+
+  .hero-tp__btn-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .hero-tp__btn--primary:hover .hero-tp__btn-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Secondary button */
+  .hero-tp__btn--secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+  }
+
+  .hero-tp__btn--secondary:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- Stats row ---------- */
+  .hero-tp__stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .hero-tp__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .hero-tp__stat-number {
+    font-family: var(--tp-font-display);
+    font-size: clamp(22px, 2vw, 30px);
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .hero-tp__stat-label {
+    font-family: var(--tp-font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b6b82;
+  }
+
+  .hero-tp__stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 0 24px;
+    flex-shrink: 0;
+  }
+
+  /* ---------- Image panel (right) ---------- */
+  .hero-tp__image-panel {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-tp__image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  .hero-tp__image-bg--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a40;
+    background-attachment: scroll;
+  }
+
+  .hero-tp__placeholder-svg {
+    width: 60%;
+    height: auto;
+    opacity: 0.15;
+  }
+
+  .hero-tp__image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(15, 15, 46, 0.5) 0%,
+      rgba(15, 15, 46, 0.05) 50%,
+      transparent 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Image entrance */
+  .hero-tp__image-panel {
+    animation: heroTpScaleIn 1.2s 0.1s both cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ---------- Edge accent line between panels ---------- */
+  .hero-tp__content-panel::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 0;
+    width: 3px;
+    height: 70%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(201, 168, 76, 0.4),
+      rgba(201, 168, 76, 0.1),
+      transparent
+    );
+    z-index: 10;
+  }
+
+  /* =============================================
+     RESPONSIVE -- Tablet
+     ============================================= */
+  @media screen and (max-width: 1024px) {
+    .hero-tp {
+      grid-template-columns: 55% 45%;
+    }
+
+    .hero-tp__content-panel {
+      padding: 60px 40px 48px;
+    }
+
+    .hero-tp__stat-divider {
+      margin: 0 16px;
+    }
+  }
+
+  /* =============================================
+     RESPONSIVE -- Mobile
+     ============================================= */
+  @media screen and (max-width: 749px) {
+    .hero-tp {
+      grid-template-columns: 1fr;
+      grid-template-rows: 50vh auto;
+      min-height: auto;
+    }
+
+    /* On mobile: image on top, content below */
+    .hero-tp__image-panel {
+      order: -1;
+      min-height: 50vh;
+    }
+
+    .hero-tp__image-bg {
+      background-attachment: scroll; /* Parallax off on mobile for performance */
+    }
+
+    .hero-tp__image-overlay {
+      background: linear-gradient(
+        to bottom,
+        transparent 40%,
+        rgba(15, 15, 46, 0.7) 100%
+      );
+    }
+
+    .hero-tp__content-panel {
+      padding: 40px 24px 48px;
+    }
+
+    .hero-tp__content-panel::after {
+      display: none;
+    }
+
+    .hero-tp__heading {
+      font-size: clamp(30px, 8vw, 42px);
+    }
+
+    .hero-tp__subheading {
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .hero-tp__ctas {
+      flex-direction: column;
+      margin-bottom: 40px;
+    }
+
+    .hero-tp__btn {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 28px;
+    }
+
+    .hero-tp__stats {
+      gap: 0;
+    }
+
+    .hero-tp__stat-number {
+      font-size: 22px;
+    }
+
+    .hero-tp__stat-label {
+      font-size: 10px;
+    }
+
+    .hero-tp__stat-divider {
+      margin: 0 12px;
+      height: 32px;
+    }
+
+    .hero-tp__geo--circle {
+      width: 180px;
+      height: 180px;
+      top: -60px;
+      right: -60px;
+    }
+
+    .hero-tp__geo--dots {
+      display: none;
+    }
+  }
+
+  /* =============================================
+     REDUCED MOTION
+     ============================================= */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-tp__anim,
+    .hero-tp__image-panel,
+    .hero-tp__eyebrow-dash,
+    .hero-tp__heading-accent,
+    .hero-tp__geo--circle {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      width: auto !important;
+    }
+
+    .hero-tp__eyebrow-dash {
+      width: 28px !important;
+    }
+
+    .hero-tp__heading-accent {
+      width: 80px !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "TextilePro Hero",
+  "tag": "section",
+  "class": "hero-textilepro-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Fournisseur B2B de confiance"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tissus Premium pour Professionnels du Textile"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Approvisionnez votre atelier avec les meilleurs tissus d'Europe et d'Asie. Qualit\u00e9 certifi\u00e9e, livraison rapide, prix grossiste."
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image",
+      "info": "Recommended: 1200 x 1600px minimum. Portrait orientation works best."
+    },
+    {
+      "type": "header",
+      "content": "Primary button"
+    },
+    {
+      "type": "text",
+      "id": "button_primary_text",
+      "label": "Primary button text",
+      "default": "Voir le catalogue"
+    },
+    {
+      "type": "url",
+      "id": "button_primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary button"
+    },
+    {
+      "type": "text",
+      "id": "button_secondary_text",
+      "label": "Secondary button text",
+      "default": "Demander un devis"
+    },
+    {
+      "type": "url",
+      "id": "button_secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "header",
+      "content": "Statistics"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Stat 1 number",
+      "default": "500+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 label",
+      "default": "Clients"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Stat 2 number",
+      "default": "10K+"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 label",
+      "default": "Produits"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_number",
+      "label": "Stat 3 number",
+      "default": "48h"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 label",
+      "default": "Livraison"
+    }
+  ],
+  "presets": [
+    {
+      "name": "TextilePro Hero"
+    }
+  ]
+}
+{% endschema %}

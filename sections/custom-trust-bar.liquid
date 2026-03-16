@@ -1,0 +1,179 @@
+{% comment %}
+  Custom Trust Bar Section - TextilePro B2B Wholesale
+  A bold reassurance bar with trust indicators in a navy/gold/beige palette.
+{% endcomment %}
+
+<style>
+  .trust-bar {
+    background-color: {{ section.settings.background_color }};
+    padding: 20px 0;
+    width: 100%;
+  }
+
+  .trust-bar__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .trust-bar__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex: 1;
+    padding: 0 24px;
+    position: relative;
+  }
+
+  .trust-bar__item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 24px;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .trust-bar__icon {
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .trust-bar__label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: {{ section.settings.text_color }};
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 749px) {
+    .trust-bar__container {
+      flex-wrap: wrap;
+      gap: 16px 0;
+    }
+
+    .trust-bar__item {
+      flex: 0 0 50%;
+      padding: 6px 12px;
+      justify-content: center;
+    }
+
+    .trust-bar__item::after {
+      display: none !important;
+    }
+
+    .trust-bar__item:nth-child(1),
+    .trust-bar__item:nth-child(2) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 16px;
+    }
+
+    .trust-bar__item:nth-child(3),
+    .trust-bar__item:nth-child(4) {
+      padding-top: 0;
+    }
+
+    .trust-bar__label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+    }
+  }
+</style>
+
+<section class="trust-bar" data-section-id="{{ section.id }}">
+  <div class="trust-bar__container">
+    {% for block in section.blocks %}
+      <div class="trust-bar__item" {{ block.shopify_attributes }}>
+        <span class="trust-bar__icon" aria-hidden="true">{{ block.settings.icon }}</span>
+        <span class="trust-bar__label">{{ block.settings.label }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Bar",
+  "tag": "section",
+  "class": "trust-bar-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#0f0f2e"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "\uD83D\uDD12"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Paiement sécurisé"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Bar",
+      "blocks": [
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\uD83D\uDD12",
+            "label": "Paiement sécurisé"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\uD83D\uDE9A",
+            "label": "Livraison 24-48h"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\uD83D\uDD04",
+            "label": "Retours 14 jours"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "\uD83D\uDCAC",
+            "label": "Support 6j/7"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
