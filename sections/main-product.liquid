@@ -304,21 +304,28 @@ document.addEventListener('DOMContentLoaded', function () {
                   <div class="price-per-item__container">
                       {% assign base_price = product.selected_or_first_available_variant.price %}
                     
-                      <select
-    id="VolumeTier-{{ section.id }}"
-    class="volume-pricing__select"
-    data-base-price="{{ base_price }}"
-  >
-    <option value="10"  data-discount="0">10 pcs</option>
-    <option value="25"  data-discount="5">25 pcs</option>
-    <option value="50"  data-discount="10">50 pcs</option>
-    <option value="75"  data-discount="15">75 pcs</option>
-    <option value="100" data-discount="20">100 pcs</option>
-  </select>
+                    <div class="product-form__input product-form__input--dropdown" style="margin-top: 1rem; width: 100%; max-width: 25rem;">
+                      <div class="select">
+                        <select
+                          id="VolumeTier-{{ section.id }}"
+                          class="select__select volume-pricing__select"
+                          data-base-price="{{ base_price }}"
+                        >
+                          <option value="10"  data-discount="0">10 pcs - {{ base_price | money }} / article</option>
+                          <option value="25"  data-discount="5">25 pcs - {{ base_price | times: 95 | divided_by: 100 | money }} / article</option>
+                          <option value="50"  data-discount="10">50 pcs - {{ base_price | times: 90 | divided_by: 100 | money }} / article</option>
+                          <option value="75"  data-discount="15">75 pcs - {{ base_price | times: 85 | divided_by: 100 | money }} / article</option>
+                          <option value="100" data-discount="20">100 pcs - {{ base_price | times: 80 | divided_by: 100 | money }} / article</option>
+                        </select>
+                        <span class="svg-wrapper">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </span>
+                      </div>
+                    </div>
 
-  <p class="volume-pricing__unit">
-    Soit <span id="UnitPrice-{{ section.id }}"></span> € / article
-  </p>
+                    <p class="volume-pricing__unit" style="margin-top: 1rem;">
+                      Soit <span id="UnitPrice-{{ section.id }}"></span> € / article
+                    </p>
 
   <input
     type="hidden"
