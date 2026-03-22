@@ -139,6 +139,46 @@
                     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                     {{ form | payment_terms }}
                   {%- endform -%}
+
+                  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const tierSelect = document.getElementById('VolumeTier-{{ section.id }}');
+  const qtyInput   = document.getElementById('Quantity-{{ section.id }}');
+  const unitSpan   = document.getElementById('UnitPrice-{{ section.id }}');
+  const mainPriceEl = document.querySelector('[data-product-price]') || document.querySelector('.price-item--regular');
+
+  if (!tierSelect || !qtyInput) return;
+
+  const basePriceCents = parseInt(tierSelect.dataset.basePrice, 10);
+
+  function formatMoney(cents) {
+    return (cents / 100).toFixed(2).replace('.', ',');
+  }
+
+  function updateFromTier() {
+    const option   = tierSelect.options[tierSelect.selectedIndex];
+    const qty      = parseInt(option.value, 10);
+    const discount = parseFloat(option.dataset.discount || '0');
+
+    const unitPriceCents = Math.round(basePriceCents * (1 - discount / 100));
+    const lotPriceCents  = unitPriceCents * qty;
+
+    qtyInput.value = qty;
+
+    if (mainPriceEl) {
+      mainPriceEl.textContent = formatMoney(lotPriceCents) + ' €';
+    }
+
+    if (unitSpan) {
+      unitSpan.textContent = formatMoney(unitPriceCents);
+    }
+  }
+
+  tierSelect.addEventListener('change', updateFromTier);
+  updateFromTier();
+});
+</script>
+                  
                 </div>
               {%- when 'inventory' -%}
                 <p
@@ -262,40 +302,32 @@
                     </span>
                   </label>
                   <div class="price-per-item__container">
-                    <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
-                      <button class="quantity__button" name="minus" type="button">
-                        <span class="visually-hidden">
-                          {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-                        </span>
-                        <span class="svg-wrapper">
-                          {{- 'icon-minus.svg' | inline_asset_content -}}
-                        </span>
-                      </button>
-                      <input
-                        class="quantity__input"
-                        type="number"
-                        name="quantity"
-                        id="Quantity-{{ section.id }}"
-                        data-cart-quantity="{{ cart_qty }}"
-                        data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                          data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                          max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                        {% endif %}
-                        step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
-                        value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        form="{{ product_form_id }}"
-                      >
-                      <button class="quantity__button" name="plus" type="button">
-                        <span class="visually-hidden">
-                          {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
-                        </span>
-                        <span class="svg-wrapper">
-                          {{- 'icon-plus.svg' | inline_asset_content -}}
-                        </span>
-                      </button>
-                    </quantity-input>
+                      {% assign base_price = product.selected_or_first_available_variant.price %}
+                    
+                      <select
+    id="VolumeTier-{{ section.id }}"
+    class="volume-pricing__select"
+    data-base-price="{{ base_price }}"
+  >
+    <option value="10"  data-discount="0">10 pcs</option>
+    <option value="25"  data-discount="5">25 pcs</option>
+    <option value="50"  data-discount="10">50 pcs</option>
+    <option value="75"  data-discount="15">75 pcs</option>
+    <option value="100" data-discount="20">100 pcs</option>
+  </select>
+
+  <p class="volume-pricing__unit">
+    Soit <span id="UnitPrice-{{ section.id }}"></span> € / article
+  </p>
+
+  <input
+    type="hidden"
+    id="Quantity-{{ section.id }}"
+    name="quantity"
+    data-cart-quantity="{{ cart_qty }}"
+    value="10"
+    form="{{ product_form_id }}"
+  >
                     {%- liquid
                       assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
                       assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.min
