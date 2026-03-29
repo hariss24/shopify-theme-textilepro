@@ -21,6 +21,12 @@ if (!customElements.get('product-form')) {
         evt.preventDefault();
         if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
 
+        const qtyInput = this.form.querySelector('[name="quantity"]');
+        if (qtyInput && parseInt(qtyInput.value) < 10) {
+          this.handleErrorMessage('La quantité minimum par article est de 10.');
+          return;
+        }
+
         this.handleErrorMessage();
 
         this.submitButton.setAttribute('aria-disabled', true);

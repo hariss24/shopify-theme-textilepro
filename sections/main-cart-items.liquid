@@ -261,7 +261,7 @@
                                 {% # theme-check-disable %}
                                 data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
                                 min="0"
-                                data-min="{{ item.variant.quantity_rule.min }}"
+                                data-min="10"
                                 {% if item.variant.quantity_rule.max != null %}
                                   max="{{ item.variant.quantity_rule.max }}"
                                 {% endif %}
@@ -456,6 +456,24 @@
     </form>
   </div>
 </cart-items>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const MIN_QTY = 10;
+    const cartItems = document.querySelector('cart-items');
+    if (!cartItems) return;
+
+    document.querySelectorAll('cart-items .quantity__input').forEach(function (input) {
+      const qty = parseInt(input.value);
+      if (qty > 0 && qty < MIN_QTY) {
+        const index = input.dataset.index;
+        if (index && cartItems.updateQuantity) {
+          cartItems.updateQuantity(index, MIN_QTY);
+        }
+      }
+    });
+  });
+</script>
 
 {% schema %}
 {
